@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// Complete the solve function below.
+    
+int solve(int n) {
+    vector <int> ar(n+1,0);
+    vector <int> arr(n+1,0);
+    int a=0,b=0;
+    int x=0;
+    while (x||a==0){
+        a++;
+        x= (x*10+4)%n;
+    if (ar[x]==1){
+        b=arr[x];
+        a-=arr[x];
+        break;
+
+    } 
+    else{
+        ar[x]=1;
+        arr[x]=a;
+
+    }
+    }
+return 2*a+b;
+    
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    int t;
+    cin >> t;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    for (int t_itr = 0; t_itr < t; t_itr++) {
+        int x;
+        cin >> x;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        int result = solve(x);
+
+        fout << result << "\n";
+    }
+
+    fout.close();
+
+    return 0;
+}
